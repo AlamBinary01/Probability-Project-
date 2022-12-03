@@ -10,12 +10,8 @@ Project detail
 
     Use only R language for statistical analysis, which means you have to link your web interface with R codes.
 
-    Statistical analysis should consist of appropriate
-
-a. Graphical and tabular data representation.
-
-b. Descriptive Statistical analysis.
-
-c. Use of Probability distribution.
-
-d. Regression Modeling and Predictions.
+a.Statistical analysis should consist of appropriate
+b. Graphical and tabular data representation.
+c. Descriptive Statistical analysis.
+d. Use of Probability distribution.
+e. Regression Modeling and Predictions.
