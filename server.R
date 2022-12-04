@@ -10,7 +10,6 @@ shinyServer(function(input,output,session){
   output$mydatatable <- renderDataTable({
     project
   })
-  
   output$plot1 <- renderPlotly({
     plot_ly(data =project,x=~ph,type = "histogram",color = "red")
   })
@@ -373,4 +372,3 @@ shinyServer(function(input,output,session){
   })
   
 })
-
