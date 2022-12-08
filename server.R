@@ -87,14 +87,14 @@ shinyServer(function(input,output,session){
   })
   output$mH4 <- renderInfoBox({
     infoBox(title = tags$b("Max"),
-            value = max(water_potability$ph),
+            value = max(water_potability$ph,na.rm = TRUE),
             subtitle = "MODE of PH",fill = T,color = "green"
     )
   })
   output$mH5 <- renderInfoBox({
     infoBox(title = tags$b("Min"),
             value = min(water_potability$ph, na.rm = TRUE),
-            subtitle = "Standard Deviation PH",fill = T,color = "green"
+            subtitle = "Min of PH",fill = T,color = "green"
     )
   })
   
@@ -372,7 +372,7 @@ shinyServer(function(input,output,session){
   })
   output$O5 <- renderInfoBox({
     infoBox(title = tags$b("Max"),
-            value = max(water_potability$Organic_carbon),
+            value = max(water_potability$Organic_carbon,na.rm = TRUE),
             subtitle = "MAX of Organic_carbon",fill = T,color = "green"
     )
   })
@@ -617,20 +617,77 @@ shinyServer(function(input,output,session){
   })
   
   # Normal Distribution of Water potability Turbidity
-  output$P6 <- renderValueBox({
+  output$P8 <- renderValueBox({
     valueBox(
       value = pnorm(q=   66.39689,mean(water_potability$Turbidity,na.rm = TRUE),sd(water_potability$Turbidity,na.rm = TRUE)),subtitle = "PNORM of Turbidity for q=   66.39689"
     )
   })
-  output$Q6 <- renderValueBox({
+  output$Q8 <- renderValueBox({
     valueBox(
       value = qnorm(p=0.23,mean(water_potability$Turbidity,na.rm = TRUE),sd(water_potability$Turbidity,na.rm = TRUE)),subtitle = "QNORM of Turbidity for p=0.23"
     )
   })
-  output$D6 <- renderValueBox({
+  output$D8 <- renderValueBox({
     valueBox(
       
       value = dnorm(x=3.98 ,mean(water_potability$Turbidity,na.rm = TRUE),sd(water_potability$Turbidity,na.rm = TRUE)),subtitle = "DNORM of Turbidity and for x=3.98 "
+    )
+  })
+  
+#covariance 
+  
+  output$a11 <- renderValueBox({
+    valueBox(
+      value = cov(water_potability$ph,water_potability$Hardness),subtitle = "Covariance of ph and Hardness"
+    )
+  })
+  output$s11 <- renderValueBox({
+    valueBox(
+      value = cov(water_potability$Hardness,water_potability$Solids),subtitle = "Covariance of Hardness and Solids"
+    )
+  })
+  output$d11 <- renderValueBox({
+    valueBox(
+      
+      value = cov(water_potability$Chloramines,water_potability$Sulfate),subtitle = "Covariance of Chloramines and Sulfate"
+        )
+  })
+  output$f11 <- renderValueBox({
+    valueBox(
+      value =  cov(water_potability$Conductivity,water_potability$Organic_carbon),subtitle = "Conductivity and Organic carbon"
+       )
+  })
+  output$g11 <- renderValueBox({
+    valueBox(
+      value =  cov(water_potability$Trihalomethanes,water_potability$Turbidity),subtitle = "Trihalemethanes and Turbidity"
+    )
+  })
+  
+  #corelation of Given dataset (water_potability)
+  output$a1 <- renderValueBox({
+    valueBox(
+      value = cor(water_potability$ph,water_potability$Hardness),subtitle = "Covariance of ph and Hardness"
+    )
+  })
+  output$s1 <- renderValueBox({
+    valueBox(
+      value = cor(water_potability$Hardness,water_potability$Solids),subtitle = "Co relation of Hardness and Solids"
+    )
+  })
+  output$d1 <- renderValueBox({
+    valueBox(
+      
+      value = cor(water_potability$Chloramines,water_potability$Sulfate),subtitle = "co relations of Chloramines and Sulfate"
+    )
+  })
+  output$f1 <- renderValueBox({
+    valueBox(
+      value =  cor(water_potability$Conductivity,water_potability$Organic_carbon),subtitle = "co relation and Organic carbon"
+    )
+  })
+  output$g1 <- renderValueBox({
+    valueBox(
+      value =  cor(water_potability$Trihalomethanes,water_potability$Turbidity),subtitle = "co relation and Turbidity"
     )
   })
   

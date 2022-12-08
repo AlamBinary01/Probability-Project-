@@ -8,6 +8,8 @@ shinyUI(
     dashboardSidebar(tags$style(HTML("
                                      .main-sidebar{
                                      width:230px;")),
+                     
+                   
       sidebarMenu(
         
         menuItem("Data",tabName = "data",icon = icon("database")),
@@ -169,7 +171,25 @@ shinyUI(
                  menuSubItem(" PNORM",tabName = "P8"),
                  menuSubItem(" DNORM",tabName = "D8"),
                  menuSubItem(" QNORM",tabName = "Q8")
+        ),
+        menuItem(" Covariance of Dataset",tabName = "covariance",
+                 menuSubItem(" Ph and Hardness",tabName = "a11"),
+                 menuSubItem(" hardness and solids",tabName = "s11"),
+                 menuSubItem(" Sulfate and chloramies",tabName = "d11"),
+                 menuSubItem(" Conductivity and Organic",tabName = "f11"),
+                 menuSubItem("Trihalomethane & Turb",tabName = "g11")
+        ),
+        menuItem(" co relation of Dataset",tabName = "covariance",
+                 menuSubItem(" Ph and Hardness",tabName = "a1"),
+                 menuSubItem(" hardness and solids",tabName = "s1"),
+                 menuSubItem(" Sulfate and chloramies",tabName = "d1"),
+                 menuSubItem(" Conductivity and Organic",tabName = "f1"),
+                 menuSubItem("Trihalomethane & Turb",tabName = "g1")
         )
+        
+        
+        
+      #Linear regression and co-variance and
         
       )
       
@@ -349,9 +369,22 @@ shinyUI(
       #Normal Distribution Turbidity
       tabItem(tabName = "P8",fluidRow(valueBoxOutput("P8",width = 4))),
       tabItem(tabName = "Q8",fluidRow(infoBoxOutput("Q8",width = 4))),
-      tabItem(tabName = "D8",fluidRow(infoBoxOutput("D8",width = 4)))
+      tabItem(tabName = "D8",fluidRow(infoBoxOutput("D8",width = 4))),
       
-      
+    #covariance of given datasets
+    tabItem(tabName = "a11",fluidRow(valueBoxOutput("a11",width = 4))),
+    tabItem(tabName = "s11",fluidRow(valueBoxOutput("s11",width = 4))),
+    tabItem(tabName = "d11",fluidRow(valueBoxOutput("d11",width = 4))),
+    tabItem(tabName = "f11",fluidRow(valueBoxOutput("f11",width = 4))),
+    tabItem(tabName = "g11",fluidRow(valueBoxOutput("g11",width = 4))),
+    
+    #corelations of given datasets
+    tabItem(tabName = "a1",fluidRow(valueBoxOutput("a1",width = 4))),
+    tabItem(tabName = "s1",fluidRow(valueBoxOutput("s1",width = 4))),
+    tabItem(tabName = "d1",fluidRow(valueBoxOutput("d1",width = 4))),
+    tabItem(tabName = "f1",fluidRow(valueBoxOutput("f1",width = 4))),
+    tabItem(tabName = "g1",fluidRow(valueBoxOutput("g1",width = 4)))
+    
       )
         
     )
